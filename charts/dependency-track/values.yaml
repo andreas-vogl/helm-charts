@@ -16,7 +16,7 @@ frontend:
   replicaCount: 2
   image:
     repository: dependencytrack/frontend
-    tag: 4.6.1
+    tag: 4.7.1
     pullPolicy: IfNotPresent
   # https://github.com/DependencyTrack/frontend/issues/60
   # configmap:
@@ -51,10 +51,9 @@ frontend:
   resources:
   # https://docs.dependencytrack.org/getting-started/deploy-docker/
     requests:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 500m
+      memory: 512Mi
     limits:
-      cpu: 1
       memory: 512Mi
   nameOverride: ""
   fullnameOverride: ""
@@ -95,7 +94,7 @@ apiserver:
   replicaCount: 1
   image:
     repository: dependencytrack/apiserver
-    tag: 4.6.3
+    tag: 4.7.1
     pullPolicy: IfNotPresent
   env: []
   persistentVolume:
@@ -127,7 +126,6 @@ apiserver:
       cpu: 2
       memory: 4608Mi
     limits:
-      cpu: 4
       memory: 16Gi
   nameOverride: ""
   fullnameOverride: ""
@@ -176,7 +174,7 @@ ingress:
 
 # -- configuration of postgres
 postgresql:
-  enabled: true
+  enabled: false
   postgresqlUsername: deptrack
   postgresqlPassword: deptrack
   postgresqlDatabase: deptrack
